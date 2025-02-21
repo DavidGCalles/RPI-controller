@@ -31,7 +31,7 @@ def create_app():
         app.config['SWAGGER_UI_HOST'] = os.getenv("SWAGGER_HOST")
     origins_allowed = []
     if Config.FLASK_ENV is None or Config.FLASK_ENV == "development":
-        origins_allowed.append("localhost")
+        origins_allowed.append("http://localhost:8080")
     else:
         origins_allowed.append("")
     CORS(app, origins=origins_allowed,
@@ -42,9 +42,9 @@ def create_app():
     api.register_blueprint(main_bp)
     api.register_blueprint(crud_bp)
     if os.getenv("RPI_MODULE"):
-        #api.register_blueprint(rpi_bp)
-        #api.register_blueprint(rpi_pin_bp)
-        #api.register_blueprint(rpi_device_bp)
+        api.register_blueprint(rpi_bp)
+        api.register_blueprint(rpi_pin_bp)
+        api.register_blueprint(rpi_device_bp)
         sqlite_manager = DBManager()
         sqlite_manager.reset_db_settings("sqlite-rpi")
         sqlite_manager.check_coherence()
