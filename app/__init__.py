@@ -8,9 +8,9 @@ from flask_smorest import Api
 from flask_cors import CORS
 from app.routes.main import main_bp
 from app.routes.demo_crud import crud_bp
-#from app.routes.rpi import rpi_bp
-#from app.routes.rpi_pin import rpi_pin_bp
-#from app.routes.rpi_device import rpi_device_bp
+from app.routes.rpi import rpi_bp
+from app.routes.rpi_pin import rpi_pin_bp
+from app.routes.rpi_device import rpi_device_bp
 from app.services.db import DBManager
 from config import Config
 
@@ -31,9 +31,9 @@ def create_app():
         app.config['SWAGGER_UI_HOST'] = os.getenv("SWAGGER_HOST")
     origins_allowed = []
     if Config.FLASK_ENV is None or Config.FLASK_ENV == "development":
-        origins_allowed.append("http://localhost:8080")
+        origins_allowed.append("*")
     else:
-        origins_allowed.append("https://front-arquetipo-856517455627.europe-southwest1.run.app")
+        origins_allowed.append("")
     CORS(app, origins=origins_allowed,
          expose_headers=['Content-Type'],
          supports_credentials=True)
