@@ -50,7 +50,7 @@
                         </div>
                         <div class="form-group">
                             <label for="bus_id">Bus ID</label>
-                            <input type="text" class="form-control" id="bus_id" required>
+                            <input type="text" class="form-control" id="bus_id">
                         </div>
                         <div class="form-group">
                             <label for="name">Name</label>
@@ -58,59 +58,68 @@
                         </div>
                         <div class="form-group">
                             <label for="device_type">Device Type</label>
-                            <input type="text" class="form-control" id="device_type" required>
+                            <select class="form-control" id="device_type" required>
+                                <option value="SENSOR">SENSOR</option>
+                                <option value="ACTUATOR">ACTUATOR</option>
+                                <option value="OTHER">OTHER</option>
+                            </select>
                         </div>
                         <div class="form-group">
                             <label for="manufacturer">Manufacturer</label>
-                            <input type="text" class="form-control" id="manufacturer" required>
+                            <input type="text" class="form-control" id="manufacturer">
                         </div>
                         <div class="form-group">
                             <label for="model">Model</label>
-                            <input type="text" class="form-control" id="model" required>
+                            <input type="text" class="form-control" id="model">
                         </div>
                         <div class="form-group">
                             <label for="serial_number">Serial Number</label>
-                            <input type="text" class="form-control" id="serial_number" required>
+                            <input type="text" class="form-control" id="serial_number">
                         </div>
                         <div class="form-group">
                             <label for="purchase_date">Purchase Date</label>
-                            <input type="date" class="form-control" id="purchase_date" required>
+                            <input type="date" class="form-control" id="purchase_date">
                         </div>
                         <div class="form-group">
                             <label for="warranty_expiration">Warranty Expiration</label>
-                            <input type="date" class="form-control" id="warranty_expiration" required>
+                            <input type="date" class="form-control" id="warranty_expiration">
                         </div>
                         <div class="form-group">
                             <label for="location">Location</label>
-                            <input type="text" class="form-control" id="location" required>
+                            <input type="text" class="form-control" id="location">
                         </div>
                         <div class="form-group">
                             <label for="status">Status</label>
-                            <input type="text" class="form-control" id="status" required>
+                            <select class="form-control" id="status" required>
+                                <option value="ACTIVE">ACTIVE</option>
+                                <option value="INACTIVE">INACTIVE</option>
+                                <option value="MAINTENANCE">MAINTENANCE</option>
+                                <option value="RETIRED">RETIRED</option>
+                            </select>
                         </div>
                         <div class="form-group">
                             <label for="pin_number">Pin Number</label>
-                            <input type="number" class="form-control" id="pin_number" required>
+                            <input type="number" class="form-control" id="pin_number">
                         </div>
                         <div class="form-group">
                             <label for="range_min">Range Min</label>
-                            <input type="number" class="form-control" id="range_min" required>
+                            <input type="number" class="form-control" id="range_min">
                         </div>
                         <div class="form-group">
                             <label for="range_max">Range Max</label>
-                            <input type="number" class="form-control" id="range_max" required>
+                            <input type="number" class="form-control" id="range_max">
                         </div>
                         <div class="form-group">
                             <label for="measure_unit">Measure Unit</label>
-                            <input type="text" class="form-control" id="measure_unit" required>
+                            <input type="text" class="form-control" id="measure_unit">
                         </div>
                         <div class="form-group">
                             <label for="last_used">Last Used</label>
-                            <input type="datetime-local" class="form-control" id="last_used" required>
+                            <input type="datetime-local" class="form-control" id="last_used">
                         </div>
                         <div class="form-group">
                             <label for="value">Value</label>
-                            <input type="text" class="form-control" id="value" required>
+                            <input type="text" class="form-control" id="value">
                         </div>
                         <button type="submit" class="btn btn-primary">Add Device</button>
                     </form>
