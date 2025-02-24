@@ -311,7 +311,13 @@
                 value: document.getElementById('value').value
             };
             console.log('Device to add:', device);
-            // Add your fetch POST request here to send the device data to the server
+            fetch('http://192.168.1.51:5001/rpi/device', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(device)
+            })  
         });
     </script>
 </body>
