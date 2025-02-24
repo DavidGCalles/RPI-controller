@@ -12,6 +12,7 @@
     <div class="card" id="devicesContainer">
         <div class="card-header">
             <h5 class="card-title">Devices</h5>
+            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#addDeviceModal">Add Device</button>
         </div>
         <div class="card-body">
             <div id="outputDevices" class="row">   
@@ -31,6 +32,92 @@
         </div>
     </div>
 
+    <!-- Add Device Modal -->
+    <div class="modal fade" id="addDeviceModal" tabindex="-1" role="dialog" aria-labelledby="addDeviceModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="addDeviceModalLabel">Add Device</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <form id="addDeviceForm">
+                        <div class="form-group">
+                            <label for="device_id">Device ID</label>
+                            <input type="number" class="form-control" id="device_id" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="bus_id">Bus ID</label>
+                            <input type="text" class="form-control" id="bus_id" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="name">Name</label>
+                            <input type="text" class="form-control" id="name" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="device_type">Device Type</label>
+                            <input type="text" class="form-control" id="device_type" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="manufacturer">Manufacturer</label>
+                            <input type="text" class="form-control" id="manufacturer" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="model">Model</label>
+                            <input type="text" class="form-control" id="model" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="serial_number">Serial Number</label>
+                            <input type="text" class="form-control" id="serial_number" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="purchase_date">Purchase Date</label>
+                            <input type="date" class="form-control" id="purchase_date" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="warranty_expiration">Warranty Expiration</label>
+                            <input type="date" class="form-control" id="warranty_expiration" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="location">Location</label>
+                            <input type="text" class="form-control" id="location" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="status">Status</label>
+                            <input type="text" class="form-control" id="status" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="pin_number">Pin Number</label>
+                            <input type="number" class="form-control" id="pin_number" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="range_min">Range Min</label>
+                            <input type="number" class="form-control" id="range_min" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="range_max">Range Max</label>
+                            <input type="number" class="form-control" id="range_max" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="measure_unit">Measure Unit</label>
+                            <input type="text" class="form-control" id="measure_unit" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="last_used">Last Used</label>
+                            <input type="datetime-local" class="form-control" id="last_used" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="value">Value</label>
+                            <input type="text" class="form-control" id="value" required>
+                        </div>
+                        <button type="submit" class="btn btn-primary">Add Device</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
 
     <!-- Bootstrap JS and dependencies -->
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
@@ -93,8 +180,6 @@
             }catch(error){
                 console.error('Error updating card value:', error);
             }
-            
-
         }
 
         function getSingleDevice(device_id){
@@ -203,6 +288,31 @@
                 console.error('Error:', error);
             });
         }
+
+        document.getElementById('addDeviceForm').addEventListener('submit', function(event) {
+            event.preventDefault();
+            const device = {
+                device_id: document.getElementById('device_id').value,
+                bus_id: document.getElementById('bus_id').value,
+                name: document.getElementById('name').value,
+                device_type: document.getElementById('device_type').value,
+                manufacturer: document.getElementById('manufacturer').value,
+                model: document.getElementById('model').value,
+                serial_number: document.getElementById('serial_number').value,
+                purchase_date: document.getElementById('purchase_date').value,
+                warranty_expiration: document.getElementById('warranty_expiration').value,
+                location: document.getElementById('location').value,
+                status: document.getElementById('status').value,
+                pin_number: document.getElementById('pin_number').value,
+                range_min: document.getElementById('range_min').value,
+                range_max: document.getElementById('range_max').value,
+                measure_unit: document.getElementById('measure_unit').value,
+                last_used: document.getElementById('last_used').value,
+                value: document.getElementById('value').value
+            };
+            console.log('Device to add:', device);
+            // Add your fetch POST request here to send the device data to the server
+        });
     </script>
 </body>
 </html>

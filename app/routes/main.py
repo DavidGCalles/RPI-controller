@@ -11,9 +11,8 @@ main_bp = Blueprint('checks', __name__)
 @main_bp.response(200, {"message": {"type": "string"}}, description="Successful response indicating the server is reachable.")
 def index():
     """
-    Makes a ping request to the server to test basic connectivity.
+    Makes a ping request to the server to test basic connectivity. It also serves the basic html interface.
     """
-    LOGGER.warning("This the root")
     if os.getenv("RPI_MODULE"):
         return send_from_directory(os.path.join(current_app.root_path, 'static'), 'index.html')
     else:
