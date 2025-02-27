@@ -134,6 +134,7 @@
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 
     <script>
+        const host = 'http://192.168.1.51:5001';
         document.addEventListener('DOMContentLoaded', (event) => {
             getDevices();
         });
@@ -142,7 +143,7 @@
         });
 
         function getDevices(){
-            fetch('http://192.168.1.51:5001/rpi/device')
+            fetch(`${host}/rpi/device`)
                 .then(response => response.json())
                 .then(data => {
                     data.forEach(device => {
@@ -192,7 +193,7 @@
         }
 
         function getSingleDevice(device_id){
-            fetch(`http://192.168.1.51:5001/rpi/device/${device_id}`)
+            fetch(`${host}/rpi/device/${device_id}`)
                 .then(response => response.json())
                 .then(data => {
                     console.log(data);
@@ -203,7 +204,7 @@
         }
 
         function readDevice(deviceId){
-            fetch(`http://192.168.1.51:5001/rpi/device/${deviceId}/read`)
+            fetch(`${host}/rpi/device/${deviceId}/read`)
                 .then(response => response.json())
                 .then(data => {
                     actualizarValorCartaComponente(deviceId, "value", data);
@@ -212,7 +213,7 @@
         }
 
         function getPin(){
-            fetch('http://192.168.1.51:5001/rpi/pin')
+            fetch(`${host}/rpi/pin`)
                 .then(response => response.json())
                 .then(data => {
                     data.forEach(pin => {
@@ -249,7 +250,7 @@
         }
 
         function getSinglePin(pin_number){
-            fetch(`http://192.168.1.51:5001/rpi/pin/${pin_number}`)
+            fetch(`${host}/rpi/pin/${pin_number}`)
                 .then(response => response.json())
                 .then(data => {
                     console.log(data);
@@ -282,7 +283,7 @@
                 "pin_number": pin_number,
                 "state": state
             };
-            fetch(`http://192.168.1.51:5001/rpi/pin/control`, {
+            fetch(`${host}/rpi/pin/control`, {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json'
@@ -320,7 +321,7 @@
                 value: document.getElementById('value').value
             };
             console.log('Device to add:', device);
-            fetch('http://192.168.1.51:5001/rpi/device', {
+            fetch(`${host}/rpi/device`, {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json'
